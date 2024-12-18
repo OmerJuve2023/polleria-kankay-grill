@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.loginWrapper {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../assets/fachada.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.loginWrapper.mounted {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 33, 68, 0.9) 0%, rgba(0, 33, 68, 0.7) 100%);
+    z-index: 1;
+}
+
+.companyInfo {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 2;
+    max-width: 500px;
+    text-align: left;
+    opacity: 0;
+    animation: slideInLeft 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.companyTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.companySubtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.loginContainer {
+    position: absolute;
+    right: 10%;
+    z-index: 2;
+    opacity: 0;
+    animation: slideInRight 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.loginBox {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loginTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #002144;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formControl {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: 8px;
+    border: 2px solid #e1e1e1;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.formControl:focus {
+    border-color: #0800ff;
+    box-shadow: 0 0 0 3px rgba(8, 0, 255, 0.1);
+    outline: none;
+    background: white;
+}
+
+.btnPrimary {
+    background-color: #FFC300;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btnPrimary:hover {
+    background-color: #002144;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btnPrimary:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.errorMessage {
+    color: #ff4d4f;
+    background-color: rgba(255, 77, 79, 0.1);
+    border: 1px solid #ff4d4f;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.inputIconContainer {
+    position: relative;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #002144;
+    pointer-events: none;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {transform: rotate(360deg);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px) translateY(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(-50%);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .loginWrapper {
+        flex-direction: column;
+        padding: 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .companyInfo {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        text-align: center;
+        margin: 20px auto;
+        padding: 0 15px;
+        max-width: 100%;
+    }
+
+    .companyTitle {
+        font-size: 2rem;
+    }
+
+    .companySubtitle {
+        font-size: 1rem;
+    }
+
+    .loginContainer {
+        position: relative;
+        right: 0;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .loginBox {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .loginWrapper {
+        padding: 0 30px;
+    }
+
+    .companyInfo {
+        left: 3%;
+        max-width: 400px;
+    }
+
+    .loginContainer {
+        right: 3%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .loginWrapper {
+        justify-content: space-between;
+        padding: 0 50px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .loginWrapper {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .companyInfo {
+        margin: 10px auto;
+    }
+
+    .loginBox {
+        padding: 20px;
+    }
+}

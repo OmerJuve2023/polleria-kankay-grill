@@ -1,0 +1,401 @@
+.title {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Stats Cards */
+.statsContainer {
+    margin-bottom: 2rem;
+}
+
+.statCard {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+}
+
+.statCard h5 {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.statCard span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Mesa Cards */
+.mesaCard {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mesaCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mesaTitle {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.estadoTag {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+}
+
+/* Estados específicos */
+.disponible .estadoTag {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.reservado .estadoTag {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.ocupado .estadoTag {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+/* Loading y Empty States */
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.emptyState {
+    padding: 3rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.emptyState h3 {
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+/* Button Container */
+.buttonContainer {
+    margin-top: auto;
+}
+
+.buttonContainer button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .mesaCard {
+        margin-bottom: 1rem;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+    }
+
+    .buttonContainer button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .statCard {
+        margin-bottom: 1rem;
+    }
+
+    .statCard h5 {
+        font-size: 0.75rem;
+    }
+
+    .statCard span {
+        font-size: 1.25rem;
+    }
+}
+
+/* Hover Effects */
+.mesaCard button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Search and Filter Section */
+.searchContainer {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.searchInput {
+    border-right: none;
+}
+
+.searchInput:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* Toast Customization */
+:global(.Toastify__toast) {
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+
+:global(.Toastify__toast-body) {
+    font-family: inherit;
+}
+
+/* Transitions */
+.fadeIn {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estado Cards Custom Styles */
+.disponible {
+    background-color: rgba(25, 135, 84, 0.05);
+}
+
+.reservado {
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.ocupado {
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+/* Refresh Button Styles */
+.refreshButton {
+    position: relative;
+    overflow: hidden;
+}
+
+.refreshButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.refreshButton:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Skeleton Loading */
+.skeletonCard {
+    height: 200px;
+    background: linear-gradient(
+            90deg,
+            #f0f0f0 25%,
+            #f8f8f8 50%,
+            #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Accessibility Improvements */
+.mesaCard button:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+.mesaCard button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Print Styles */
+@media print {
+    .buttonContainer {
+        display: none !important;
+    }
+
+    .mesaCard {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .searchContainer,
+    .refreshButton {
+        display: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+    .mesaCard {
+        border: 1px solid CanvasText !important;
+    }
+
+    .estadoTag {
+        border: 1px solid CanvasText !important;
+    }
+}
+
+/* Custom Scrollbar */
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Tooltip Styles */
+.tooltipContainer {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.tooltipContainer:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Error State Styles */
+.errorContainer {
+    text-align: center;
+    padding: 2rem;
+    background: #fff3f3;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.errorIcon {
+    color: #dc3545;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.errorMessage {
+    color: #842029;
+    margin-bottom: 1rem;
+}
+
+.errorButton {
+    background: none;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.errorButton:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Responsive Grid Adjustments */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+@media (max-width: 576px) {
+    .statCard {
+        padding: 0.75rem;
+    }
+
+    .mesaTitle {
+        font-size: 1.25rem;
+    }
+
+    .estadoTag {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.75rem !important;
+    }
+}
